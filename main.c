@@ -1,29 +1,16 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "include/pwm.h"
+#include "include/adc.h"
 
-const int time = 1000;
+const int time = 100;
 int main (void) {
-	servoInit();
 	int i = 0;
-	//servoSetPosition(0,90);
-	//servoSetPosition(1,45);
-	//servoSetPosition(0,-90);
+	servoInit();
+	adc_init();
 while(1) {
 	while ( i < 4 ) {
-	servoSetPosition(i,-90);
-	_delay_ms(time);
-
-	servoSetPosition(i,-45);
-	_delay_ms(time);
-
-	servoSetPosition(i,0);
-	_delay_ms(time);
-
-	servoSetPosition(i,45);
-	_delay_ms(time);
-
-	servoSetPosition(i,90);
+	servoSetPosition(i,read_adc(i));
 	_delay_ms(time);
 	i++;
 	}

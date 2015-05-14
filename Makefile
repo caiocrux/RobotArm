@@ -5,9 +5,9 @@ F_CPU=16000000UL
 CFLAGS= -g -Os -Wall
 TARGET=robot
 CFLAGS += -DF_CPU=$(F_CPU)
-bin: main.o pwm.o util.o
+bin: main.o pwm.o util.o adc.o
 #	$(CC) $(CFLAGS) -mmcu=$(MCU) main.o usart.o interrupt.o timer.o -o $(TARGET)
-	$(CC) $(CFLAGS) -mmcu=$(MCU) main.o pwm.o util.o -o $(TARGET)
+	$(CC) $(CFLAGS) -mmcu=$(MCU) main.o pwm.o util.o adc.o -o $(TARGET)
 
 hex :
 	avr-objcopy -O ihex -R .eeprom $(TARGET) $(TARGET).hex 
@@ -20,6 +20,10 @@ main.o:main.c
 
 pwm.o: src/pwm.c include/pwm.h
 	$(CC) $(CFLGS) -mmcu=$(MCU) -c src/pwm.c
+
+adc.o: src/adc.c include/adc.h
+	$(CC) $(CFLGS) -mmcu=$(MCU) -c src/adc.c
+
 
 util.o: src/util.c include/util.h
 	$(CC) $(CFLGS) -mmcu=$(MCU) -c src/util.c
