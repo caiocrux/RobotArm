@@ -26,7 +26,7 @@ void servoInit(void) {
 void servoSetPosition(int servo,int position) {
 //	uint16_t servo_pos= map( position, -90, 90, MIN_PULSE_WIDTH, MAX_PULSE_WIDTH);
 
-	uint16_t servo_pos= map( position, 0, 1024, MIN_PULSE_WIDTH, MAX_PULSE_WIDTH);
+	uint16_t servo_pos= map( position, 0, 1022, MIN_PULSE_WIDTH, MAX_PULSE_WIDTH);
 
 	switch(servo) {
 		case 0:
