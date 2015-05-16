@@ -13,7 +13,7 @@ hex :
 	avr-objcopy -O ihex -R .eeprom $(TARGET) $(TARGET).hex 
 
 flash:
-	avrdude -v -v -v -c arduino -p m328p -P /dev/ttyUSB0 -b57600 -U flash:w:$(TARGET).hex
+	avrdude -v -v -v -c wiring -p atmega2560 -P /dev/ttyACM1 -b115200 -U flash:w:$(TARGET).hex
 	
 main.o:main.c
 	$(CC) $(CFLAGS) -mmcu=$(MCU) -c main.c

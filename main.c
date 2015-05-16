@@ -8,13 +8,15 @@ int main (void) {
 	int i = 0;
 	servoInit();
 	adc_init();
-while(1) {
-	while ( i < 4 ) {
-	servoSetPosition(i,read_adc(i));
-	_delay_ms(time);
-	i++;
-	}
+	while(1) {
+	
+		while ( i < 4 ) {
+			servoSetPosition(i,read_adc(i));
+		//	_delay_ms(time);
+			i++;
+		}
 	i=0;
+
 }
 	return 0;
 }
